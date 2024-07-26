@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bouncing Text Animation</title>
+<style>
+  /* Apply animation to the text */
+  .animated-text {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 5s ease infinite;
+  }
+
+  /* Define keyframes for the animation */
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-500px);
+    }
+  }
+</style>
+</head>
+<body>
+
+<h1 class="animated-text">Bouncing Text</h1>
+
+</body>
+</html>

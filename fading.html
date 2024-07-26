@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fade In and Out Animation</title>
+<style>
+  /* Apply animation to the text */
+  .animated-text {
+    animation: fadeInOut 3s ease-in-out infinite;
+  }
+
+  /* Define keyframes for the animation */
+  @keyframes fadeInOut {
+    0%, 100% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+</style>
+</head>
+<body>
+
+<h1 class="animated-text">Fading Text</h1>
+
+</body>
+</html>

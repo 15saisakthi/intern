@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sliding Paragraph Animation</title>
+<style>
+  /* Hide overflow to prevent line breaks */
+  #sliding-paragraph {
+    white-space: nowrap;
+    overflow: hidden;
+    animation: slideParagraph 5s linear; /* Adjust duration as needed */
+  }
+
+  /* Define keyframes for the animation */
+  @keyframes slideParagraph {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+</style>
+</head>
+<body>
+
+<p id="sliding-paragraph">This is a sample paragraph that slides from left to right.</p>
+
+</body>
+</html>

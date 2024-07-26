@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sliding Words Animation</title>
+<style>
+  /* Hide overflow to prevent line breaks */
+  #sliding-words-container {
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  /* Apply animation to each word */
+  .word {
+    display: inline-block;
+    opacity: 0;
+    animation: slideIn 1s forwards;
+  }
+
+  /* Define keyframes for the animation */
+  @keyframes slideIn {
+    0% { transform: translateX(-100%); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+  }
+</style>
+</head>
+<body>
+
+<div id="sliding-words-container">
+  <span class="word">Hello</span>
+  <span class="word">World</span>
+  <span class="word">Welcome</span>
+  <span class="word">to</span>
+  <span class="word">the</span>
+  <span class="word">Website</span>
+</div>
+
+<script>
+  // Select all words
+  const words = document.querySelectorAll('.word');
+
+  // Function to slide words one by one
+  function slideWords(index) {
+    if (index < words.length) {
+      // Apply animation to the word at the specified index
+      words[index].style.animationDelay = '0.5s';
+      words[index].style.animation = 'slideIn 1s forwards';
+
+      // Increment index and call the function recursively after a delay
+      setTimeout(() => {
+        slideWords(index + 1);
+      }, 100); // Adjust the delay as needed
+    }
+  }
+
+  // Start sliding words
+  slideWords(0);
+</script>
+
+</body>
+</html>

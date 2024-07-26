@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Letter Animation</title>
+<style>
+  /* Hide overflow to prevent line breaks */
+  #animated-paragraph {
+    white-space: nowrap;
+    overflow: hidden;
+    background-color: aqua;
+  }
+
+  /* Define keyframes for the animation */
+  @keyframes reveal {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  /* Apply animation to each letter */
+  .letter {
+    display: inline-block;
+    opacity: 0;
+    animation: reveal 0.5s forwards;
+  }
+</style>
+</head>
+<body>
+
+<p id="animated-paragraph">This is a sample paragraph.</p>
+
+<script>
+  const paragraph = document.getElementById('animated-paragraph');
+  const text = paragraph.textContent.trim();
+  paragraph.textContent = '';
+
+  // Iterate over each word in the text
+  text.split(' ').forEach((word, index) => {
+    // Iterate over each character in the word
+    [...word].forEach((char, i) => {
+      // Create a span for the letter
+      const span = document.createElement('span');
+      span.textContent = char;
+      span.classList.add('letter');
+      // Set a delay for the animation based on index and position within word
+      span.style.animationDelay = `${index * 0.1 + i * 0.1}s`;
+      // Append the span to the paragraph
+      paragraph.appendChild(span);
+    });
+
+    // Add a space between words
+    if (index < text.split(' ').length - 1) {
+      paragraph.appendChild(document.createTextNode(' '));
+    }
+  });
+
+  // Remove background color once animation is complete
+  setTimeout(() => {
+    paragraph.style.backgroundColor = 'transparent';
+  }, text.length * 100); // Adjust the delay as needed
+</script>
+
+</body>
+</html>

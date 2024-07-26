@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Popup Login Page</title>
+<style>
+  /* The overlay */
+  .overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    z-index: 1; /* Ensure the overlay is on top of other content */
+    cursor: pointer; /* Change cursor to pointer when hovering over the overlay */
+  }
+
+  /* The popup login form */
+  .popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    z-index: 2; /* Ensure the popup is on top of the overlay */
+  }
+
+  /* Styling for the form fields */
+  .popup input[type="text"],
+  .popup input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  /* Styling for the submit button */
+  .popup input[type="submit"] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  /* Close button */
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #aaa;
+    font-size: 20px;
+    text-decoration: none;
+  }
+</style>
+</head>
+<body>
+
+<!-- The overlay -->
+<div id="overlay" class="overlay"></div>
+
+<!-- The popup login form -->
+<div id="popup" class="popup">
+  <a href="#" class="close" onclick="closePopup()">&times;</a>
+  <form onsubmit="return login()">
+    <label for="username">Username:</label><br>
+    <input type="text" id="username" name="username" required><br>
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password" required><br><br>
+    <input type="submit" value="Login">
+  </form>
+</div>
+
+<!-- Button to open the popup -->
+<button onclick="openPopup()">Open Login Popup</button>
+
+<script>
+  // Predefined username and password
+  const predefinedUsername = "user";
+  const predefinedPassword = "password";
+
+  // Function to open the popup
+  function openPopup() {
+    document.getElementById('overlay').style.display = 'block';
+    document.getElementById('popup').style.display = 'block';
+  }
+
+  // Function to close the popup
+  function closePopup() {
+    document.getElementById('overlay').style.display = 'none';
+    document.getElementById('popup').style.display = 'none';
+  }
+
+  // Function to handle login
+  function login() {
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    if (username === predefinedUsername && password === predefinedPassword) {
+      alert("Login successful!");
+      closePopup();
+      return false; // Prevent form submission
+    } else {
+      alert("Invalid username or password. Please try again.");
+      return false; // Prevent form submission
+    }
+  }
+</script>
+
+</body>
+</html>
